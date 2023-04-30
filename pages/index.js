@@ -3,6 +3,7 @@ import Image from "next/image";
 import logo from "/public/GREACHY.png";
 import styles from "@component/styles/Home.module.css";
 
+import Chatbot from "@component/componets/chatbot";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         </header>
         <main className={styles.pageMain}>
           <div className={styles.element}>
+            <Chatbot/>
           </div>
         </main>
         <footer className={styles.pageFooter}>
