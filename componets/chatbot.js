@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { ChatGPT } from "chatgpt";
 
-const chatGPT = new ChatGPT({
-  apiKey: process.env.CHATGTP_API_KEY,
-});
-
 const Chatbot = () => {
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState("");
