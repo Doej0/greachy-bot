@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import { useRouter } from "next/router";
-import { ChatGPT } from "chatgpt";
+import React from "react";
+import { useState } from "react";
 
 const Chatbot = () => {
+  const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
-  const [response, setResponse] = useState("");
-  const router = useRouter();
 
   const handleChange = (e) => {
     setMessage(e.target.value);
@@ -14,31 +12,30 @@ const Chatbot = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const request = {
-      message: message,
+    const newMessage = {
+      text: message,
+      createdAt: new Date(),
     };
 
-    ChatGPT.post("https://api.chat-gpt.com/v1/generate", request)
-      .then((response) => {
-        setResponse(response.data.generated_text);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
+    setMessages([...messages, newMessage]);
     setMessage("");
   };
 
   return (
     <div>
+      <h1>Chatbot</h1>
       <input
         type="text"
-        placeholder="Type your message here..."
+        placeholder="Enter your message"
         value={message}
         onChange={handleChange}
       />
       <button onClick={handleSubmit}>Send</button>
-      <div>{response}</div>
+      <ul>
+        {messages.map((message) => (
+          <li key={message.id}>{message.text}</li>
+        ))}
+      </ul>
     </div>
   );
 };
