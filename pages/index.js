@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import logo from "/public/GREACHY.png";
 import styles from "@component/styles/Home.module.css";
-import ChatBubble from "../componets/chatBubble";
+
 
 export default function Home() {
   return (
@@ -26,9 +26,6 @@ export default function Home() {
         </header>
         <main className={styles.pageMain}>
           <div className={styles.element}>
-            <div className={styles.chatBubble}>
-              <ChatBubble message="Hello, how can I help you?" />
-            </div>
           </div>
         </main>
         <footer className={styles.pageFooter}>
